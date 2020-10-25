@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep internetowy</title>
+</head>
+<body>
+    <header>
+        <h1>Sklep internetowy</h1>
+        <img src="images/logo.jpg" alt="Sklep internetowy Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Strona główna</a></li>
+            <li><a href="pages/user.html">Klienci</a></li>
+            <li><a href="pages/item.html">Przedmioty</a></li>
+            <li><a href="pages/order.html">Zamowienia</a></li>
+        </ul>
+    </nav>Departamenty
+    <main>
+        <h2>Dane o kliencie</h2>
+        <form>
+            <div>
+                <label for="firstName">Imię:<sup>*</sup></label>
+                <input type="text" value="Jan" name="firstName" id="firstName" disabled/>
+            </div>
+            <div>
+                <label for="lastName">Nazwisko:<sup>*</sup></label>
+                <input type="text" value="Kowalski" name="lastName" id="lastName" disabled/>
+            </div>
+            <div>
+                <label for="email">Email:<sup>*</sup></label>
+                <input type="text" value="jan.kowalski@acme.com" name="email" id="email" disabled/>
+            </div>
+        </form>
+        <div>
+            <a href="">Edytuj</a>    
+        </div>  
+
+        <h2>Dane o zakupach</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>E-mail</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>Imię
+            <tbody>
+                <tr>
+                    <td>Jan</td>
+                    <td>Kowalski</td>
+                    <td>jan.kowalski@acme.com</td>
+                </tr>
+            </tbody>
+        </table>
+        <p><a href="useradd-form.html">Dodaj nowego pracownika</a></p>
+        
+    </main>
+    <footer>
+        Maciej, Wasiak, s18952
+    </footer>
+</body>
+</html>
