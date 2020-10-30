@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sklep internetowy</title>
+</head>
+<body>
+    <header>
+        <h1>Sklep internetowy</h1>
+        <img src="../images/logo.jpg" alt="Sklep internetowy Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Strona główna</a></li>
+            <li><a href="user.html">Klienci</a></li>
+            <li><a href="item.html">Przedmioty</a></li>
+            <li><a href="order.html">Zamowienia</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Nowe zamówienie</h2>
+        <form>
+            <div>
+                <label for="client">Klient:<sup>*</sup></label>
+                <input type="text" name="client" id="client" />
+            </div>
+            <div>
+                <label for="item">Przedmiot:<sup>*</sup></label>
+                <input type="text" name="item" id="item" />
+            </div>
+            <div>
+                <label for="price">Data(PLN):<sup>*</sup></label>
+                <input type="text" name="price" id="price" />
+            </div>
+            <div>
+                <label for="date">Data:</label>
+                <input type="text" name="date" id="date"/>
+            </div>
+            <div>
+                <label for="shiping-date">Data wysyłki:</label>
+                <input type="text" name="shiping-date" id="shiping-date" />
+            </div>
+            <div>
+                <label for="shipping-address">Adres wysyłki:</label>
+                <input type="text" name="shipping-address" id="shipping-address" />
+            </div>
+        </form>
+        <div>
+            <input type="submit" value="Dodaj" />
+            <a href="item.html">Anuluj</a>    
+        </div>  
+        
+    </main>
+    <footer>
+        Maciej, Wasiak, s18952
+    </footer>
+</body>
+</html>
