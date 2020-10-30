@@ -22,7 +22,7 @@
     </nav>
     <main>
         <h2>Nowe zamówienie</h2>
-        <form>
+        <form class="form">
             <div>
                 <label for="client">Klient:<sup>*</sup></label>
                 <input type="text" name="client" id="client" />
@@ -47,11 +47,13 @@
                 <label for="shipping-address">Adres wysyłki:</label>
                 <input type="text" name="shipping-address" id="shipping-address" />
             </div>
+            <br>
+            <div>
+                <input class="form-button-submit" type="submit" value="Dodaj" />
+                <a class="form-button-cancel" href="item.html">Anuluj</a>    
+            </div>  
         </form>
-        <div>
-            <input type="submit" value="Dodaj" />
-            <a href="item.html">Anuluj</a>    
-        </div>  
+
         
     </main>
     <footer>

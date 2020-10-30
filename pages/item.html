@@ -20,15 +20,16 @@
             <li><a href="order.html">Zamowienia</a></li>
         </ul>
     </nav>
-    <main>
+    <main class="">
         <h2>Przedmioty</h2>
-        <table>
+        <table class="table-list">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nazwa</th>
                     <th>Typ</th>
                     <th>Cena(PLN)</th>
+                    <th>Akcje</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,22 +39,22 @@
                     <td>RTV</td>
                     <td>2</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="szczegoly-item.html">Szczegóły</a>
+                                <a href="szczegoly-item.html" class="list-actions-button-details">Szczegóły</a>
                             </li>
                             <li>
-                                <a href="itemadd-form.html">Edytuj</a>
+                                <a href="itemadd-form.html" class="list-actions-button-edit">Edytuj</a>
                             </li>
                             <li>
-                                <a href="">Usuń</a>
+                                <a href="" class="list-actions-button-delete">Usuń</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <p><a href="../index.html">Powrot</a></p>
+        <p><a class="form-button-cancel" href="../index.html">Powrot</a></p>
 
         
     </main>

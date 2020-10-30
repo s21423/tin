@@ -12,7 +12,7 @@
         <h1>Sklep internetowy</h1>
         <img src="../images/logo.jpg" alt="Sklep internetowy Logo">
     </header>
-    <nav>
+    <nav class="form-buttons">
         <ul>
             <li><a href="../index.html">Strona główna</a></li>
             <li><a href="user.html">Klienci</a></li>
@@ -22,7 +22,7 @@
     </nav>
     <main>
         <h2>Nowy klient</h2>
-        <form>
+        <form class="form">
             <div>
                 <label for="firstName">Imię:<sup>*</sup></label>
                 <input type="text" name="firstName" id="firstName" />
@@ -35,11 +35,12 @@
                 <label for="email">Email:<sup>*</sup></label>
                 <input type="text" name="email" id="email" />
             </div>
+            <br>
+            <div>
+                <input class="form-button-submit" type="submit" value="Dodaj" />
+                <a class="form-button-cancel" href="user.html">Anuluj</a>    
+            </div>  
         </form>
-        <div>
-            <input type="submit" value="Dodaj" />
-            <a href="user.html">Anuluj</a>    
-        </div>  
         
     </main>
     <footer>

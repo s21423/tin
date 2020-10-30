@@ -22,7 +22,7 @@
     </nav>
     <main>
         <h2>Zamowienia</h2>
-        <table>
+        <table class="table-list">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -31,6 +31,7 @@
                     <th>Data</th>
                     <th>Data wysyłki</th>
                     <th>Adres wysyłki</th>
+                    <th>Akcje</th>
                 </tr>
             </thead>
             <tbody>
@@ -42,22 +43,22 @@
                     <td>Przewidywana data wysyłki 10.11.2020</td>
                     <td>Ul. Testowa</td>
                     <td>
-                        <ul>
+                        <ul class="list-actions">
                             <li>
-                                <a href="orderdetails.html">Szczegóły</a>
+                                <a href="orderdetails.html"class="list-actions-button-details">Szczegóły</a>
                             </li>
                             <li>
-                                <a href="orderadd-form.html">Edytuj</a>
+                                <a href="orderadd-form.html"class="list-actions-button-edit">Edytuj</a>
                             </li>
                             <li>
-                                <a href="">Usuń</a>
+                                <a href="" class="list-actions-button-delete">Usuń</a>
                             </li>
                         </ul>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <p><a href="../index.html">Powrot</a></p>
+        <p><a class="form-button-cancel" href="../index.html">Powrot</a></p>
 
         
     </main>

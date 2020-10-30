@@ -22,7 +22,7 @@
     </nav>
     <main>
         <h2>Nowy przedmiot</h2>
-        <form>
+        <form class="form">
             <div>
                 <label for="name">Nazwa:<sup>*</sup></label>
                 <input type="text" name="name" id="name" />
@@ -35,11 +35,12 @@
                 <label for="price">Cena(PLN):<sup>*</sup></label>
                 <input type="text" name="price" id="price" />
             </div>
+            <div>
+                <br>
+                <input class="form-button-submit" type="submit" value="Dodaj" />
+                <a class="form-button-cancel" href="item.html">Anuluj</a>    
+            </div>  
         </form>
-        <div>
-            <input type="submit" value="Dodaj" />
-            <a href="item.html">Anuluj</a>    
-        </div>  
         
     </main>
     <footer>

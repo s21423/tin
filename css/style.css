@@ -25,6 +25,10 @@ header{
     overflow: auto;
 }
 
+img{
+    height: 200px;
+}
+
 header h1 {
     float: left;
 }
