@@ -23,38 +23,27 @@
     <main>
         <h2>Nowe zamówienie</h2>
         <form class="form">
-            <div>
-                <label for="client">Klient:<sup>*</sup></label>
-                <input type="text" name="client" id="client" />
-            </div>
-            <div>
-                <label for="item">Przedmiot:<sup>*</sup></label>
-                <input type="text" name="item" id="item" />
-            </div>
-            <div>
-                <label for="price">Data(PLN):<sup>*</sup></label>
-                <input type="text" name="price" id="price" />
-            </div>
-            <div>
-                <label for="date">Data:</label>
-                <input type="text" name="date" id="date"/>
-            </div>
-            <div>
-                <label for="shiping-date">Data wysyłki:</label>
-                <input type="text" name="shiping-date" id="shiping-date" />
-            </div>
-            <div>
-                <label for="shipping-address">Adres wysyłki:</label>
-                <input type="text" name="shipping-address" id="shipping-address" />
-            </div>
-            <br>
-            <div>
+            <label for="client">Klient:<sup>*</sup></label>
+                <select id="client" name="client">
+                  <option value="client">Jan Kowalski</option>
+                </select>
+            <label for="item">Przedmiot:<sup>*</sup></label>
+                <select id="item" name="client">
+                  <option value="item">Test</option>
+                </select>
+            <label for="price">Data(PLN):<sup>*</sup></label>
+            <input type="text" name="price" id="price" />
+            <label for="date">Data:</label>
+            <input type="text" name="date" id="date"/>
+            <label for="shiping-date">Data wysyłki:</label>
+            <input type="text" name="shiping-date" id="shiping-date" />
+            <label for="shipping-address">Adres wysyłki:</label>
+            <input type="text" name="shipping-address" id="shipping-address" />
+            <div class="form-buttons">
                 <input class="form-button-submit" type="submit" value="Dodaj" />
-                <a class="form-button-cancel" href="item.html">Anuluj</a>    
+                <a class="form-button-cancel" href="item.html">Anuluj</a>  
             </div>  
         </form>
-
-        
     </main>
     <footer>
         Maciej, Wasiak, s18952

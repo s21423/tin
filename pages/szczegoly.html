@@ -22,21 +22,14 @@
     </nav>
     <main>
         <h2>Dane o kliencie</h2>
-        <form>
-            <div>
-                <label for="firstName">Imię:</label>
-                <input type="text" value="Jan" name="firstName" id="firstName" disabled/>
-            </div>
-            <div>
-                <label for="lastName">Nazwisko:</label>
-                <input type="text" value="Kowalski" name="lastName" id="lastName" disabled/>
-            </div>
-            <div>
-                <label for="email">Email:</label>
-                <input type="text" value="jan.kowalski@acme.com" name="email" id="email" disabled/>
-            </div>
-            <br>
-            <div>
+        <form class="form">
+            <label for="firstName">Imię:</label>
+            <input type="text" value="Jan" name="firstName" id="firstName" disabled/>
+            <label for="lastName">Nazwisko:</label>
+            <input type="text" value="Kowalski" name="lastName" id="lastName" disabled/>
+            <label for="email">Email:</label>
+            <input type="text" value="jan.kowalski@acme.com" name="email" id="email" disabled/>
+            <div class="form-buttons">
                 <a class="form-button-submit" href="useradd-form.html">Edytuj</a>    
             </div>  
         </form>
@@ -49,9 +42,8 @@
                     <th>Imię</th>
                     <th>Nazwisko</th>
                     <th>E-mail</th>
-                    <th>Akcje</th>
                 </tr>
-            </thead>Imię
+            </thead>
             <tbody>
                 <tr>
                     <td>Jan</td>
