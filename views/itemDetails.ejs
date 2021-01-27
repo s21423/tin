@@ -1,0 +1,58 @@
+<%- include('fragments/header.ejs') %>
+    <main>
+        <h2><%= pageTitle %></h2>
+        <form class="form">
+            <input type="hidden" name="id" value="<%= item.id %>">
+            <label for="name">Nazwa:</label>
+            <input type="text" value="<%= item.nazwa %>" name="name" id="name" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="type">Typ:</label>
+            <input type="text" value="<%= item.typ %>" name="type" id="type" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="price">Cena:</label>
+            <input type="text" value="<%= item.cena %>" name="price" id="price" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <a class="list-actions-button-edit" href="/item/edit/<%= item.id %>">Edytuj</a>
+            </div> 
+        </form>
+
+        <h2>
+            Zamówienia:
+        </h2>
+
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Data zamowienia</th>
+                <th>Data wysylki</th>
+                <th>Adres wysylki</th>
+                <th>Imie</th>
+                <th>Nazwisko</th>
+                <th>Email klienta</th>
+            </tr>
+            </thead>
+
+
+            <tbody>
+            <% for (let zakupy of item.zakupy) { %>
+            <tr>
+                <td><%=zakupy.data_zamowienia.toISOString().split('T')[0]%></td>
+                <td><%=zakupy.data_wysylki.toISOString().split('T')[0]%></td>
+                <td><%=zakupy.adres_wysylki%></td>
+                <td><%=zakupy.klient.imie%></td>
+                <td><%=zakupy.klient.nazwisko%></td>
+                <td><%=zakupy.klient.email%></td>
+            </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <br>
+        <a href="/item" class="list-actions-button-details form-buttons">Powrót</a>
+
+    </main>
+    <%- include('fragments/footer.ejs') %>

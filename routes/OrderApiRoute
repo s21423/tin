@@ -1,0 +1,12 @@
+const express = require('express');
+const router = express.Router();
+
+const userController = require('../api/OrderAPI');
+
+router.get('/', userController.showOrderList);
+router.get('/:orderId', userController.showOrderDetails);
+router.post('/', userController.addOrder);
+router.put('/:orderId', userController.editOrder);
+router.delete('/:orderId', userController.deleteOrderById);
+
+module.exports = router;

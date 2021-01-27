@@ -1,0 +1,46 @@
+<%- include('fragments/header.ejs') %>
+
+<main>
+        <h2>Klienci</h2>
+    <% if (komunikat === false) {
+    }else { %>
+    <p style="color: green">Komunikat: <%=komunikatTresc%></p>
+    <% } %>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>E-mail</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for (let klient of klienci) { %>
+            <tr>
+                    <td><%= klient.imie %></td>
+                    <td><%= klient.nazwisko %></td>
+                    <td><%= klient.email %></td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="/user/details/<%=klient.id%>"  class="list-actions-button-details">Szczegóły</a>
+                            </li>
+                            <li>
+                                <a href="/user/edit/<%=klient.id%>" class="list-actions-button-edit">Edytuj</a>
+                            </li>
+                            <li>
+                                <a href="/user/delete/<%=klient.id%>" onclick="return confirm('Czy chcesz usunąć ten rekord?')" class="list-actions-button-delete">Usuń</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+
+        </table>
+        <p><a  class="button-add" href="/user/add">Dodaj nowego klienta</a></p>
+
+        
+    </main>
+<%- include('fragments/footer.ejs') %>

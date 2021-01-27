@@ -1,0 +1,48 @@
+<%- include('fragments/header.ejs') %>
+    <main>
+        <script type="application/javascript" src="/javascripts/validationCommon.js"></script>
+        <script type="application/javascript" src="/javascripts/validationItemForm.js"></script>
+        <h2><%= pageTitle %></h2>
+        <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();" >
+            <input type="hidden" name="id" value="<%= item.id %>">
+
+            <label for="nazwa">Nazwa:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="nazwa" id="name" value="<%= item.nazwa %>"  <%= (formMode == 'showDetails') ? 'disabled' : '' %> class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('nazwa')) ? 'error-input' : '' %><%}%>"/>
+            <span id="errorName" class="errors-text">
+                <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                    <% if (validationErrors.find(e => e.path.includes('nazwa'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('nazwa')).message %>
+                    <% } %>
+                <%}%>
+            </span>
+
+            <label for="typ">Typ:<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="typ" id="type" value="<%= item.typ %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('typ')) ? 'error-input' : '' %><%}%>"/>
+            <span id="errorType" class="errors-text">
+                <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                    <% if (validationErrors.find(e => e.path.includes('typ'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('typ')).message %>
+                    <% } %>
+                <%}%>
+            </span>
+
+            <label for="cena">Cena(PLN):<abbr title="required" aria-label="required">*</abbr></label>
+            <input type="text" name="cena" id="price" value="<%= item.cena %>" <%= (formMode == 'showDetails') ? 'disabled' : '' %> class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('cena')) ? 'error-input' : '' %><%}%>"/>
+            <span id="errorPrice" class="errors-text">
+                <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                    <% if (validationErrors.find(e => e.path.includes('cena'))) { %>
+                        <%= validationErrors.find(e => e.path.includes('cena')).message %>
+                    <% } %>
+                <%}%>
+            </span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text"></p>
+                <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+                <a class="form-button-cancel" href="/item">Anuluj</a>
+            </div>
+
+        </form>
+
+    </main>
+    <%- include('fragments/footer.ejs') %>

@@ -1,0 +1,43 @@
+<%- include('fragments/header.ejs') %>
+    <main>
+        <h2><%= pageTitle %></h2>
+        <form class="form">
+            <input type="hidden" name="id" value="<%= order.id %>">
+            <label for="id">ID:</label>
+            <input type="text" value="<%= order.id %>" name="id" id="id" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="client">Klient:</label>
+            <input type="text" value="<%= order.klient.imie%> <%= order.klient.nazwisko%>" name="client" id="client" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="item">Przedmiot:</label>
+            <input type="text" value="<%= order.przedmiot.nazwa%>" name="item" id="item" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="date">Data:</label>
+            <input type="text" value="<%= order.klient.imie%>" name="date" id="date" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="shiping-date">Data wysyłki:</label>
+            <input type="text" value="<%= order.data_wysylki.toISOString().split('T')[0]%>" name="shiping-date" id="shiping-date" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="shipping-address">Adres wysyłki:</label>
+            <input type="text" value="<%= order.adres_wysylki%>" name="shipping-address" id="shipping-address" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <label for="shipping-address">Email:</label>
+            <input type="text" value="<%= order.klient.email%>" name="shipping-address" id="shipping-address" disabled/>
+            <span id="errorFirstName" class="errors-text"></span>
+
+            <div class="form-buttons">
+                <a class="list-actions-button-edit" href="/order/edit/<%= order.id%>" >Edytuj</a>
+            </div> 
+        </form>
+
+        <br>
+        <a href="/order" class="list-actions-button-details form-buttons">Powrót</a>
+
+    </main>
+    <%- include('fragments/footer.ejs') %>

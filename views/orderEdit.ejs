@@ -1,0 +1,102 @@
+<%- include('fragments/header.ejs') %>
+
+<body>
+<main>
+    <script type="application/javascript" src="/javascripts/validationCommon.js"></script>
+    <script type="application/javascript" src="/javascripts/validationOrderForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <form class="form" method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="id" value="<%= orderEdit.id%>" >
+        <label for="klient">Klient:<abbr title="required" aria-label="required">*</abbr></label>
+        <% if (Object.keys(validationErrors).length === 0) {%>
+            <select id="client" name="klient_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%> >
+                <option value="" selected>--- Wybierz pracownika ---</option>
+                <% for (let i=0; i<allKlients.length; i++) { let klient = allKlients[i]; %>
+                <option value="<%= klient.id %>" label="<%= klient.imie + ' ' + klient.nazwisko %>"
+                        <%= (orderEdit.id && klient.id.toString() == orderEdit.klient.id.toString()) ? 'selected' : ''%>></option>
+                <% } %>
+            </select>
+        <% }else{%>
+            <select id="client" name="klient_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%> class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('klient')) ? 'error-input' : '' %><%}%>">
+                <option value="" selected>--- Wybierz pracownika ---</option>
+                <% for (let i=0; i<allKlients.length; i++) { let klient = allKlients[i]; %>
+                <option value="<%= orderData.klient %>" label="<%= klient.imie + ' ' + klient.nazwisko %>"
+                        <%= (klient.id.toString() == orderData.klient) ? 'selected' : ''%>></option>
+                <% } %>
+            </select>
+        <%}%>
+
+        <span id="errorClient" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('klient'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('klient')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+
+        <label for="przedmiot">Przedmiot:<abbr title="required" aria-label="required">*</abbr></label>
+        <% if (Object.keys(validationErrors).length === 0) {%>
+            <select id="item" name="przedmiot_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>  >
+                <option value="" selected>--- Wybierz przedmiot ---</option>
+                <% for (let i=0; i<allPrzedmioty.length; i++) { let przedmiot = allPrzedmioty[i]; %>
+                <option value="<%= przedmiot.id%>" label="<%= przedmiot.nazwa%>"
+                        <%= (orderEdit.id && przedmiot.id.toString() == orderEdit.przedmiot.id.toString()) ? 'selected' : ''%>></option>
+                <% } %>
+            </select>
+        <% }else{%>
+            <select id="item" name="przedmiot_id" required <%= (formMode == 'showDetails') ? 'disabled' : ''%>  class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('przedmiot')) ? 'error-input' : '' %><%}%>">
+                <option value="" selected>--- Wybierz przedmiot ---</option>
+                <% for (let i=0; i<allPrzedmioty.length; i++) { let przedmiot = allPrzedmioty[i]; %>
+                <option value="<%= orderData.przedmiot%>" label="<%= przedmiot.nazwa%>"
+                        <%= (przedmiot.id.toString() == orderData.przedmiot) ? 'selected' : ''%>></option>
+                <% } %>
+            </select>
+        <%}%>
+
+        <span id="errorItem" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('przedmiot'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('przedmiot')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+        <label for="data_zamowienia">Data:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="date" name="data_zamowienia" id="date" value="<% if (Object.keys(orderData).length === 0){%><%= orderEdit.data_zamowienia.toISOString().split('T')[0]%><% }else{%><%= orderData.data_zamowienia%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('data_zamowienia')) ? 'error-input' : '' %><%}%>"/>
+        <span id="errorDate" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('data_zamowienia'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('data_zamowienia')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+        <label for="data_wysylki">Data wysyłki:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="date" name="data_wysylki" id="shiping-date"  value="<% if (Object.keys(orderData).length === 0){%><%= orderEdit.data_wysylki.toISOString().split('T')[0]%><% }else{%><%= orderData.data_wysylki%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('data_wysylki')) ? 'error-input' : '' %><%}%>"/>
+        <span id="errorShippingDate" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('data_wysylki'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('data_wysylki')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+        <label for="adres_wysylki">Adres wysyłki:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" name="adres_wysylki" id="shipping-address" value="<% if (Object.keys(orderData).length === 0){%><%= orderEdit.adres_wysylki%><% }else{%><%= orderData.adres_wysylki%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('adres_wysylki')) ? 'error-input' : '' %><%}%>"/>
+        <span id="errorShippingAddress" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('adres_wysylki'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('adres_wysylki')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text"></p>
+            <input class="form-button-submit" type="submit" value="Dodaj" />
+            <a class="form-button-cancel" href="/">Anuluj</a>
+        </div>
+    </form>
+</main>
+<%- include('fragments/footer.ejs') %>

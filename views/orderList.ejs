@@ -1,0 +1,49 @@
+<%- include('fragments/header.ejs') %>
+    <main>
+        <% if (komunikat === false) {
+        }else { %>
+        <p style="color: green">Komunikat: <%=komunikatTresc%></p>
+        <% } %>
+        <h2>Zamowienia</h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Klient</th>
+                    <th>Przedmiot</th>
+                    <th>Data</th>
+                    <th>Data wysyłki</th>
+                    <th>Adres wysyłki</th>
+                    <th>Akcje</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for (let o of orders) { %>
+                <tr>
+                    <td><%= o.id %></td>
+                    <td><%= o.klient.imie %> <%= o.klient.nazwisko %></td>
+                    <td><%= o.przedmiot.nazwa %></td>
+                    <td><%= o.data_zamowienia.toISOString().split('T')[0]  %></td>
+                    <td><%= o.data_wysylki.toISOString().split('T')[0]  %></td>
+                    <td><%= o.adres_wysylki %></td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="/order/details/<%= o.id %>" class="list-actions-button-details">Szczegóły</a>
+                            </li>
+                            <li>
+                                <a href="/order/edit/<%= o.id %>" class="list-actions-button-edit">Edytuj</a>
+                            </li>
+                            <li>
+                                <a href="/order/delete/<%= o.id %>" onclick="return confirm('Czy chcesz usunąć ten rekord?')" class="list-actions-button-delete">Usuń</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <p><a class="button-add" href="/order/add">Dodaj zamowienie</a></p>
+    </main>
+    <%- include('fragments/footer.ejs') %>
+

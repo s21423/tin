@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= pageTitle%></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+<header>
+    <h1>Sklep internetowy</h1>
+    <img src="/images/logo.png" alt="Sklep internetowy Logo" style="width: 200px; height: 200px">
+</header>
+<nav class="form-buttons">
+    <ul>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>">Strona główna</a></li>
+        <% if(!loggedUser) { %>
+        <li><a href="/register" class="<%= navLocation == 'rejestracja' ? 'active' : ''%>">Rejestracja</a></li>
+        <% } %>
+        <% if(loggedUser) { %>
+        <li><a href="/user" class="<%= navLocation == 'klient' ? 'active' : ''%>">Klienci</a></li>
+        <li><a href="/item" class="<%= navLocation == 'item' ? 'active' : ''%>">Przedmioty</a></li>
+        <li><a href="/order" class="<%= navLocation == 'order' ? 'active' : ''%>">Zamowienia</a></li>
+        <% } %>
+    </ul>
+</nav>

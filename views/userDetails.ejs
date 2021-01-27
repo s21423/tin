@@ -1,0 +1,56 @@
+<%- include('fragments/header.ejs') %>
+<main>
+    <h2><%= pageTitle %></h2>
+    <form class="form">
+        <input type="hidden" name="id" value="<%= klient.id %>">
+        <label for="firstName">Imię:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" value="<%= klient.imie %>" name="firstName" id="firstName" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorFirstName" class="errors-text"></span>
+        <label for="lastName">Nazwisko:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" value="<%= klient.nazwisko %>" name="lastName" id="lastName" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorFirstName" class="errors-text"></span>
+        <label for="email">Email:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" value="<%= klient.email %>" name="email" id="email" <%= (formMode == 'showDetails') ? 'disabled' : '' %>/>
+        <span id="errorFirstName" class="errors-text"></span>
+        <% if (formMode == 'showDetails') { %>
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text"></p>
+            <a class="list-actions-button-edit" href="/user/edit/<%= klient.id %>">Edytuj</a>
+        </div>
+        <% } %>
+    </form>
+
+    <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+        <h2>Zakupy</h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th>Data zamówienia</th>
+                <th>Data wysyłki</th>
+                <th>Adres wysyłki</th>
+                <th>Nazwa</th>
+                <th>Typ</th>
+                <th>Cena(PLN)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let zakupy of klient.zakupy) { %>
+
+                <tr>
+                    <td><%= zakupy.data_zamowienia.toISOString().split('T')[0] %></td>
+                    <td><%= zakupy.data_wysylki.toISOString().split('T')[0] %></td>
+                    <td><%= zakupy.adres_wysylki %></td>
+                    <td><a href="/item/details/<%= zakupy.przedmiot.id%>"> <%= zakupy.przedmiot.nazwa%></a></td>
+                    <td><%= zakupy.przedmiot.typ%></td>
+                    <td><%= zakupy.przedmiot.cena%></td>
+
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    <% } %>
+    <br>
+    <a href="/user" class="list-actions-button-details form-buttons">Powrót</a>
+
+</main>
+<%- include('fragments/footer.ejs') %>

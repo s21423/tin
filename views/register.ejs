@@ -1,0 +1,65 @@
+<%- include('fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/javascripts/validationClientForm.js"></script>
+    <script type="application/javascript" src="/javascripts/validationCommon.js"></script>
+    <h2><%= pageTitle %></h2>
+
+    <form class="form" method="post" action="<%=formAction%>" onsubmit="return validateForm();">
+        <label for="imie">Imię:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" name="imie" id="firstName" placeholder="2-60 znaków" value="<% if (Object.keys(klient).length === 0) {%><% }else{%><%=klient.imie%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('imie')) ? 'error-input' : '' %><%}%>"/>
+        <span id="errorFirstName" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('imie'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('imie')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+        <label for="nazwisko">Nazwisko:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" name="nazwisko" id="lastName" placeholder="2-60 znaków" value="<% if (Object.keys(klient).length === 0) {%><% }else{%><%=klient.nazwisko%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('nazwisko')) ? 'error-input' : '' %><%}%>" />
+        <span id="errorLastName" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('nazwisko'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('nazwisko')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+
+        <label for="email">Email:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="text" name="email" id="email" placeholder="np. nazwa@domena.pl" value="<% if (Object.keys(klient).length === 0) {%><% }else{%><%=klient.email%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : '' %><%}%>" />
+        <span id="errorEmail" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                    <% if (validationErrors.find(e => e.path.includes('email')).message === 'Klients.email must be unique') {%>
+                        Podany adres email jest już używany
+                    <% } else {%>
+                        <%= validationErrors.find(e => e.path.includes('email')).message %>
+                    <%}%>
+                <%}%>
+            <%}%>
+        </span>
+
+        <label for="password">Hasło:<abbr title="required" aria-label="required">*</abbr></label>
+        <input type="password" name="password" id="password" placeholder="1-60 znaków" value="<% if (Object.keys(klient).length === 0) {%><% }else{%><%=klient.nazwisko%><%}%>" class="<% if (Object.keys(validationErrors).length === 0) {%><% }else{%><%= validationErrors.find(e => e.path.includes('nazwisko')) ? 'error-input' : '' %><%}%>" />
+        <span id="errorLastName" class="errors-text">
+            <% if (Object.keys(validationErrors).length === 0) {%><% }else{%>
+                <% if (validationErrors.find(e => e.path.includes('password'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('password')).message %>
+                <% } %>
+            <%}%>
+        </span>
+
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text"></p>
+            <% if (formMode != 'showDetails') { %>
+            <input class="form-button-submit" type="submit" value="<%=btnLabel%>" />
+            <a class="form-button-cancel" href="/user">Anuluj</a>
+            <% } else { %>
+                <a class="form-button-cancel" href="/user">Powrót</a>
+            <% } %>
+        </div>
+    </form>
+
+</main>
+<%- include('fragments/footer.ejs') %>
